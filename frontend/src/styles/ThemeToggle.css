@@ -1,0 +1,53 @@
+/* src/styles/ThemeToggle.css */
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--toggle-bg);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.toggle-btn:hover {
+    transform: translateY(-2px);
+}
+
+.toggle-btn:active {
+    transform: translateY(0);
+}
+
+.moon-icon,
+.sun-icon {
+    width: 24px;
+    height: 24px;
+    stroke: var(--toggle-icon-color);
+    transition: stroke 0.3s;
+}
+
+/* Animation for icon switch */
+.toggle-btn svg {
+    animation: rotate 0.5s;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

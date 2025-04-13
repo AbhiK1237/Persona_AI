@@ -1,0 +1,396 @@
+/* App.css - With Theme Variables */
+/* Light theme variables */
+:root[data-theme="light"] {
+    --primary-color: #4361ee;
+    /* Blue */
+    --secondary-color: #7f5af0;
+    /* Violet */
+    --accent-color: #2cb67d;
+    /* Accent for buttons/highlights */
+    --background-color: #f9f9f9;
+    /* Light background */
+    --chat-bg: #ffffff;
+    /* White chat background */
+    --user-message-bg: #e6effd;
+    /* Light blue for user messages */
+    --ai-message-bg: #f1ecfe;
+    /* Light violet for AI messages */
+    --text-color: #27272a;
+    /* Dark text for light theme */
+    --secondary-text: #555566;
+    /* Secondary text color */
+    --border-color: #e4e4e7;
+    /* Border color */
+    --header-gradient-start: #4361ee;
+    /* Blue gradient start */
+    --header-gradient-end: #7f5af0;
+    /* Violet gradient end */
+    --toggle-bg: #f1ecfe;
+    /* Toggle button background */
+    --toggle-icon-color: #4361ee;
+    /* Toggle icon color */
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    /* Shadow color */
+}
+
+/* Dark theme variables */
+:root[data-theme="dark"] {
+    --primary-color: #7f5af0;
+    /* Vibrant violet */
+    --secondary-color: #4ea8de;
+    /* Soft blue */
+    --accent-color: #2cb67d;
+    /* Accent for buttons/highlights */
+    --background-color: #16161a;
+    /* Dark background */
+    --chat-bg: #242629;
+    /* Slightly lighter background for chat */
+    --user-message-bg: #383c54;
+    /* Dark blue for user messages */
+    --ai-message-bg: #2b2c41;
+    /* Dark violet for AI messages */
+    --text-color: #fffffe;
+    /* Light text for dark theme */
+    --secondary-text: #94a1b2;
+    /* Secondary text color */
+    --border-color: #32323e;
+    /* Border color */
+    --header-gradient-start: #7f5af0;
+    /* Violet gradient start */
+    --header-gradient-end: #4361ee;
+    /* Blue gradient end */
+    --toggle-bg: #2b2c41;
+    /* Toggle button background */
+    --toggle-icon-color: #fffffe;
+    /* Toggle icon color */
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    /* Shadow color */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.app {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--header-gradient-start), var(--header-gradient-end));
+    color: white;
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.header h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.header p {
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+.chat-container {
+    flex: 1;
+    background-color: var(--chat-bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-height: 70vh;
+}
+
+.welcome-message {
+    display: flex;
+    align-items: center;
+    background-color: var(--ai-message-bg);
+    padding: 16px;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 80%;
+    border-left: 3px solid var(--primary-color);
+}
+
+.chai-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+}
+
+.message {
+    display: flex;
+    align-items: flex-start;
+    max-width: 85%;
+}
+
+.user-message {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.ai-message {
+    align-self: flex-start;
+}
+
+.avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin: 0 10px;
+    background-color: var(--primary-color);
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+.message-content {
+    padding: 12px 16px;
+    border-radius: 18px;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.user-message .message-content {
+    background-color: var(--user-message-bg);
+    border-bottom-right-radius: 5px;
+    box-shadow: 0 1px 3px var(--shadow-color);
+}
+
+.ai-message .message-content {
+    background-color: var(--ai-message-bg);
+    border-bottom-left-radius: 5px;
+    box-shadow: 0 1px 3px var(--shadow-color);
+}
+
+.ai-thinking {
+    display: flex;
+    align-items: flex-start;
+    max-width: 85%;
+    align-self: flex-start;
+}
+
+.thinking-content {
+    padding: 12px 16px;
+    border-radius: 18px;
+    border-bottom-left-radius: 5px;
+    background-color: var(--ai-message-bg);
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--secondary-text);
+}
+
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.typing-indicator span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+    display: inline-block;
+    animation: typing 1.5s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+@keyframes typing {
+
+    0%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: translateY(-5px);
+        opacity: 1;
+    }
+}
+
+.thought-process {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+    border-top: 1px dashed var(--border-color);
+    padding-top: 8px;
+}
+
+.thought-bubble {
+    font-size: 14px;
+    color: var(--secondary-text);
+    font-style: italic;
+}
+
+.input-form {
+    display: flex;
+    gap: 10px;
+    padding: 15px;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--chat-bg);
+}
+
+.chat-input {
+    flex: 1;
+    padding: 14px;
+    border-radius: 25px;
+    border: 1px solid var(--border-color);
+    font-size: 15px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.chat-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(127, 90, 240, 0.2);
+}
+
+.send-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 25px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+.send-button:hover:not(:disabled) {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.send-button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.send-button:disabled {
+    background-color: var(--border-color);
+    color: var(--secondary-text);
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+/* Link styling */
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+/* Code block styling for the chat */
+code {
+    background-color: var(--border-color);
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9em;
+}
+
+pre {
+    background-color: var(--border-color);
+    padding: 10px;
+    border-radius: 8px;
+    overflow-x: auto;
+    border-left: 3px solid var(--primary-color);
+    margin: 10px 0;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    .app {
+        padding: 10px;
+    }
+
+    .header {
+        padding: 15px;
+    }
+
+    .header h1 {
+        font-size: 24px;
+    }
+
+    .message {
+        max-width: 95%;
+    }
+
+    .send-button {
+        padding: 12px 15px;
+    }
+
+    .theme-toggle {
+        top: 10px;
+        right: 10px;
+    }
+}
